@@ -6,7 +6,7 @@
 #include "Logic.h"
 #include "const.h"
 #include "Settings.h"
-
+#include <ctime>
 void
 EraseThread::run ()
 {
@@ -24,7 +24,7 @@ EraseThread::run ()
   crc16 = Logic::generate_crc16 (packet);
   packet[PACKETSIZE - 2] = crc16 / 256;
   packet[PACKETSIZE - 1] = crc16 % 256;
-  end = FALSE;
+  end = false;
 
   /* send erase packet */
   if (port->send_packet (packet) < PACKETSIZE)
@@ -48,7 +48,7 @@ EraseThread::run ()
 	{
 	  port->close_port ();
 	  emit set_progress (1, 1);
-	  emit error (TRUE);
+	  emit error (true);
 	  return;
 	}
       if (time (NULL) != tp)

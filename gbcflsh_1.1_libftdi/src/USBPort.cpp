@@ -26,35 +26,35 @@ bool USBPort::open_port (QString /*port_name*/) {
 int ftStatus = ftdi_usb_open_desc(&ftdic, 0x0403, 0x6001, "gbcflsh", NULL);
 if (ftStatus < 0) {
   printf("couldn't open port : %d\n",ftStatus);
-  return FALSE;
+  return false;
 }
 /* choose speed */
 if (Settings::speed == STANDARD)
 {
   if (ftdi_set_baudrate (&ftdic, 185000) < 0)
-   return FALSE;
+   return false;
 }
 else if (Settings::speed == LOW)
 {
   if (ftdi_set_baudrate (&ftdic, 125000) < 0)
-   return FALSE;
+   return false;
 }
 else if (Settings::speed == HIGH)
 {
   if (ftdi_set_baudrate (&ftdic, 375000) < 0)
-   return FALSE;
+   return false;
 }
 
 if (ftdi_set_latency_timer (&ftdic, 2) < 0)
-  return FALSE;
+  return false;
 if (ftdi_set_line_property (&ftdic, BITS_8, STOP_BIT_1, NONE) < 0)
-  return FALSE;
+  return false;
   //if(FT_SetTimeouts(ftHandle,5000,0) != FT_OK)
-  //      return FALSE;
+  //      return false;
   //if(ftdi_enable_bitbang(&ftdic,0xFF) < 0)
-  //      return FALSE;
+  //      return false;
 
-  return TRUE;			/* all ok */
+  return true;			/* all ok */
 
 
 
@@ -62,7 +62,7 @@ if (ftdi_set_line_property (&ftdic, BITS_8, STOP_BIT_1, NONE) < 0)
 
 bool USBPort::close_port () {
   ftdi_usb_close (&ftdic);
-  return TRUE;
+  return true;
 }
 
 int USBPort::send_packet (unsigned char packet[PACKETSIZE]) {

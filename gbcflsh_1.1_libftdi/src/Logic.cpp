@@ -97,7 +97,7 @@ Logic::read_status (AbstractPort * port, const char *port_name, char id, char mb
 		    char algorythm, status_t * flasher_stat)
 {
   assert (port != NULL);
-  if (port->open_port (port_name) == FALSE)
+  if (port->open_port (port_name) == false)
     return PORT_ERROR;
 
   unsigned short crc16;
@@ -179,12 +179,12 @@ Logic::read_status (AbstractPort * port, const char *port_name, char id, char mb
 	  flasher_stat->crc16 = 256 * packet[35] + packet[36];
 
 	  port->close_port ();
-	  return TRUE;
+	  return true;
 	}
       else
 	{
 	  port->close_port ();
-	  return FALSE;
+	  return false;
 	}
     }
 }
@@ -263,7 +263,7 @@ Logic::flash_file_size (FILE * file)
     case 8192 * 1024:
       return (short) (mem_size / 1024L);
     default:
-      return FALSE;
+      return false;
     }
 }
 
@@ -279,7 +279,7 @@ Logic::ram_file_size (FILE * file)
     case 128 * 1024:
       return (short) (mem_size / 1024L);
     default:
-      return FALSE;
+      return false;
     }
 }
 
@@ -301,9 +301,9 @@ Logic::send_start_packet (AbstractPort * port, config_t cfg)
   packet[PACKETSIZE - 2] = crc16 / 256;
   packet[PACKETSIZE - 1] = crc16 % 256;
   if (port->send_packet (packet) < PACKETSIZE)
-    return FALSE;
+    return false;
   else
-    return TRUE;
+    return true;
 }
 
 QString

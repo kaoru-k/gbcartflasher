@@ -11,16 +11,16 @@
 #include "Logic.h"
 #include "About.h"
 
-#ifdef Q_WS_X11
+#ifdef Q_OS_X11
 #include "SerialPort.h"
 #include "USBPort.h"
 #endif
 
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 #include "USBPortMac.h"
 #endif
 
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
 #include "USBPortWin.h"
 #include "SerialPortWin.h"
 #endif
@@ -61,7 +61,7 @@ Gui::Gui (QWidget * parent):QWidget (parent)
   progress = new QProgressBar (this);
   down->addWidget (progress);
   cancel_btn = new QPushButton (tr ("Cancel"), this);
-  cancel_btn->setEnabled (FALSE);
+  cancel_btn->setEnabled (false);
   down->addWidget (cancel_btn);
   right->addLayout (down);
   grid->addLayout (right, 0, 2);
@@ -131,9 +131,9 @@ Gui::Gui (QWidget * parent):QWidget (parent)
     SLOT (setRamButtons (void)));
   setProgress (0, 1);
   console->print (tr ("GB Cart Flasher version ") + VER + tr (" started."));
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
 /* device detection is avilable only on Windows */
-  if (Settings::commanual == FALSE) {
+  if (Settings::commanual == false) {
     console->print (tr ("Detecting device..."));
   }
 #endif
@@ -143,21 +143,21 @@ AbstractPort *
 Gui::create_port (void) {
   switch (port_type) {
     case USB:
-      #ifdef Q_WS_WIN
+      #ifdef Q_OS_WIN
           return new USBPortWin;
       #endif
-      #ifdef Q_WS_X11
+      #ifdef Q_OS_X11
           return new USBPort;
       #endif
-      #ifdef Q_WS_MAC
+      #ifdef Q_OS_MAC
           printf("opening MAC USB port\n");
           return new USBPortMac;
       #endif
     case SERIAL:
-      #ifdef Q_WS_WIN
+      #ifdef Q_OS_WIN
           return new SerialPortWin;
       #endif
-      #ifdef Q_WS_X11
+      #ifdef Q_OS_X11
           return new SerialPort;
       #endif
     break;
@@ -169,10 +169,10 @@ void Gui::startup_info (void) {
   status_t status;
   int which_port = -1;		//none at beggining
 
-  if (Settings::commanual == FALSE) {
+  if (Settings::commanual == false) {
     port_type = USB;
     AbstractPort *port = create_port ();
-    if (Logic::read_status (port, "USB", NREAD_ID, 0x00, 0x00, &status) == TRUE) {
+    if (Logic::read_status (port, "USB", NREAD_ID, 0x00, 0x00, &status) == true) {
      QString tmp;
      console->print (tr ("Device connected to: USB"));
     	  settings->setCom (4);	//4 is index of usb in combobox
@@ -187,7 +187,7 @@ void Gui::startup_info (void) {
      port_type = SERIAL;
      port = create_port ();
      for (int i = 0; i < PORTS_COUNT; i++) {
-       if (Logic::read_status (port, settings->getCom(i).toAscii(), NREAD_ID, 0x00, 0x00, &status) == TRUE) {
+       if (Logic::read_status (port, settings->getCom(i).toLatin1(), NREAD_ID, 0x00, 0x00, &status) == true) {
          which_port = i;
          break;
        }
@@ -214,11 +214,11 @@ void Gui::startup_info (void) {
   status_t status;
   QString tmp;
   AbstractPort *port = create_port ();
-  int return_code = Logic::read_status (port, settings->getCom().toAscii(), READ_ID,
+  int return_code = Logic::read_status (port, settings->getCom().toLatin1(), READ_ID,
    settings->getMbc (),
    Settings::algorythm, &status);
 
-  if (return_code == TRUE)	/* no error */
+  if (return_code == true)	/* no error */
   {
 
     console->print (tr ("--Device information--"));
@@ -234,7 +234,7 @@ void Gui::startup_info (void) {
     tmp = tmp.sprintf (" 0x%x", status.chip_id);
     console->print (tr ("FLASH memory chip ID:") + tmp);
 
-    if (Settings::showbbl == TRUE)
+    if (Settings::showbbl == true)
     {
      if (status.bbl == 1)
        tmp = tr ("Locked!");
@@ -293,7 +293,7 @@ Gui::read_flash (void)
   if (file_name != "")
   {
     thread_RFLA->port = create_port ();
-    if (thread_RFLA->port->open_port (settings->getCom().toAscii()) == FALSE)
+    if (thread_RFLA->port->open_port (settings->getCom().toLatin1()) == false)
     {
      print_error (PORT_ERROR);
      return;
@@ -303,13 +303,13 @@ Gui::read_flash (void)
      && !file_name.contains (".sgb", Qt::CaseInsensitive))
      file_name = file_name + ".gb";
 
-   thread_RFLA->file = fopen (file_name.toAscii (), "wb");
+   thread_RFLA->file = fopen (file_name.toLatin1 (), "wb");
    thread_RFLA->mbc = settings->getMbc ();
    thread_RFLA->page_count = settings->getFlash () / 16;
    thread_RFLA->dap = Settings::dap;
    thread_RFLA->algorythm = Settings::algorythm;
 
-   setEnabledButtons (FALSE);
+   setEnabledButtons (false);
    thread_RFLA->start (Settings::priority);
 
    console->print (tr ("Reading data from FLASH to file:") + "\n" +
@@ -330,17 +330,17 @@ Gui::write_flash (void)
     long bytes_count;
     short kilobytes_count;
     thread_WFLA->port = create_port ();
-    if (thread_WFLA->port->open_port (settings->getCom().toAscii()) == FALSE)
+    if (thread_WFLA->port->open_port (settings->getCom().toLatin1()) == false)
     {
      print_error (PORT_ERROR);
      return;
    }
-   thread_WFLA->file = fopen (file_name.toAscii (), "rb");
+   thread_WFLA->file = fopen (file_name.toLatin1 (), "rb");
    thread_WFLA->mbc = settings->getMbc ();
    thread_WFLA->algorythm = Settings::algorythm;
    thread_WFLA->dap = Settings::dap;
 
-   if (settings->isAuto () == FALSE)
+   if (settings->isAuto () == false)
    {
      bytes_count = Logic::file_size (thread_WFLA->file);
      thread_WFLA->page_count =
@@ -352,7 +352,7 @@ Gui::write_flash (void)
 
    }
    else if ((kilobytes_count = Logic::flash_file_size (thread_WFLA->file))
-    != FALSE)
+    != false)
      thread_WFLA->page_count = kilobytes_count / 16;
    else
    {
@@ -360,7 +360,7 @@ Gui::write_flash (void)
      thread_WFLA->port->close_port ();
      return;
    }
-   setEnabledButtons (FALSE);
+   setEnabledButtons (false);
 
    thread_WFLA->start (Settings::priority);
    console->print (tr ("Writing data to FLASH from file:") + "\n" +
@@ -383,14 +383,14 @@ Gui::read_ram (void)
   if (file_name != "")
   {
     thread_RRAM->port = create_port ();
-    if (thread_RRAM->port->open_port (settings->getCom().toAscii()) == FALSE)
+    if (thread_RRAM->port->open_port (settings->getCom().toLatin1()) == false)
     {
      print_error (PORT_ERROR);
      return;
    }
    if (!file_name.contains (".sav", Qt::CaseInsensitive))
      file_name = file_name + ".sav";
-   thread_RRAM->file = fopen (file_name.toAscii (), "wb");
+   thread_RRAM->file = fopen (file_name.toLatin1 (), "wb");
    thread_RRAM->mbc = settings->getMbc ();
    thread_RRAM->algorythm = Settings::algorythm;
    thread_RRAM->dap = Settings::dap;
@@ -404,7 +404,7 @@ Gui::read_ram (void)
      thread_RRAM->_2k = 0;
      thread_RRAM->page_count = settings->getRam () / 8;
    }
-   setEnabledButtons (FALSE);
+   setEnabledButtons (false);
    thread_RRAM->start (Settings::priority);
 
    console->print (tr ("Reading data from RAM to file:") + "\n" +
@@ -425,17 +425,17 @@ Gui::write_ram (void)
     long bytes_count;
     short kilobytes_count;
     thread_WRAM->port = create_port ();;
-    if (thread_WRAM->port->open_port (settings->getCom().toAscii()) == FALSE)
+    if (thread_WRAM->port->open_port (settings->getCom().toLatin1()) == false)
     {
      print_error (PORT_ERROR);
      return;
    }
-   thread_WRAM->file = fopen (file_name.toAscii (), "rb");
+   thread_WRAM->file = fopen (file_name.toLatin1 (), "rb");
    thread_WRAM->mbc = settings->getMbc ();
    thread_WRAM->algorythm = Settings::algorythm;
    thread_WRAM->dap = Settings::dap;
 
-   if (settings->isAuto () == FALSE)
+   if (settings->isAuto () == false)
    {
      bytes_count = Logic::file_size (thread_WRAM->file);
      if (bytes_count == 2048)
@@ -456,7 +456,7 @@ Gui::write_ram (void)
      }
    }
    else if ((kilobytes_count = Logic::ram_file_size (thread_WRAM->file)) !=
-    FALSE)
+    false)
      if (kilobytes_count == 2)
      {
        thread_WRAM->_2k = 1;
@@ -473,7 +473,7 @@ Gui::write_ram (void)
        thread_WRAM->port->close_port ();
        return;
      }
-     setEnabledButtons (FALSE);
+     setEnabledButtons (false);
 
      thread_WRAM->start (Settings::priority);
      console->print (tr ("Writing data to RAM from file:") + "\n" +
@@ -489,7 +489,7 @@ Gui::write_ram (void)
  Gui::erase_flash (void)
  {
   thread_E->port = create_port ();
-  if (thread_E->port->open_port (settings->getCom().toAscii()) == FALSE)
+  if (thread_E->port->open_port (settings->getCom().toLatin1()) == false)
   {
     print_error (PORT_ERROR);
     return;
@@ -498,7 +498,7 @@ Gui::write_ram (void)
   thread_E->mem = EFLA;		//FLASH
   thread_E->par = Settings::algorythm;
   thread_E->dap = Settings::dap;
-  setEnabledButtons (FALSE);
+  setEnabledButtons (false);
   console->print (tr ("Erasing FLASH memory..."));
   thread_E->start (Settings::priority);
 }
@@ -507,7 +507,7 @@ void
 Gui::erase_ram (void)
 {
   thread_E->port = create_port ();
-  if (thread_E->port->open_port (settings->getCom().toAscii()) == FALSE)
+  if (thread_E->port->open_port (settings->getCom().toLatin1()) == false)
   {
     print_error (PORT_ERROR);
     return;
@@ -533,7 +533,7 @@ Gui::erase_ram (void)
 
   thread_E->par = window_count;
   thread_E->dap = Settings::dap;
-  setEnabledButtons (FALSE);
+  setEnabledButtons (false);
   console->print (tr ("Erasing RAM memory..."));
   thread_E->start (Settings::priority);
 }
@@ -560,7 +560,7 @@ Gui::setEnabledButtons (bool state)
   //this buttons needs to be dissabled 
   //if no ram is avilable
   if (settings->isRamDisabled ())
-    state = FALSE;
+    state = false;
   rram_btn->setEnabled (state);
   wram_btn->setEnabled (state);
   eram_btn->setEnabled (state);
@@ -571,7 +571,7 @@ void
 Gui::setRamButtons ()
 {
   if (status_btn->isEnabled ())
-    setEnabledButtons (TRUE);
+    setEnabledButtons (true);
 }
 
 void
@@ -611,18 +611,18 @@ Gui::print_error (int err)
     console->print (tr (">Bad file size."));
     break;
 
-    case FALSE:
+    case false:
     console->print (tr (">Operation failure."));
     break;
 
-    case TRUE:
+    case true:
       console->print (tr (">Success!"));	/* succes is not a error code */
     break;
   }
 
   console->line ();
   setProgress (0, 1);
-  setEnabledButtons (TRUE);
+  setEnabledButtons (true);
 }
 
 void

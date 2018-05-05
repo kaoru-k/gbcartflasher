@@ -32,7 +32,7 @@ bool SerialPort::open_port(QString port_name)
   descriptor = open (port_name.toAscii(), O_RDWR | O_NOCTTY | O_NDELAY);
   if (descriptor != -1)			/* is port opened */
   {
-    opened = TRUE;
+    opened = true;
     struct termios ts;		/* structure describing port */
     tcgetattr (descriptor, &ts);	/* get actual state of port */
 
@@ -60,21 +60,21 @@ bool SerialPort::open_port(QString port_name)
      */
     tcsetattr (descriptor, TCSANOW, &ts);
     fcntl (descriptor, F_SETFL, FNDELAY); /* don't wait for data while reading */
-    return TRUE;
+    return true;
   }
   else
-    return FALSE;
+    return false;
 }
 
 bool SerialPort::close_port ()
 {
   if (descriptor == -1)
-    return FALSE;
+    return false;
   else
   {
     close (descriptor);
-    opened = FALSE;
-    return TRUE;
+    opened = false;
+    return true;
   }
 }
 
@@ -87,9 +87,9 @@ int SerialPort::send_packet(unsigned char packet[PACKETSIZE])
 bool SerialPort::send_char (unsigned char character)
 {
   if (write (descriptor, &character, 1))
-    return TRUE;
+    return true;
   else
-    return FALSE;
+    return false;
 }
 
 int SerialPort::receive_char (void)

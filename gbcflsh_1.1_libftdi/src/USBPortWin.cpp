@@ -27,30 +27,30 @@ USBPortWin::USBPortWin()
 bool USBPortWin::open_port (QString port_name)
 {
 	if(FT_Open(0,&ftHandle) != FT_OK)
-		return FALSE;
+		return false;
 /* choose speed */
     if(Settings::speed == STANDARD){
     	if(FT_SetBaudRate(ftHandle,185000) != FT_OK)
-	   	   return FALSE;
+	   	   return false;
     }
     else if(Settings::speed == LOW){
         if(FT_SetBaudRate(ftHandle,125000) != FT_OK)
-	   	   return FALSE;
+	   	   return false;
     }
     else if(Settings::speed == HIGH){
         if(FT_SetBaudRate(ftHandle,375000) != FT_OK)
-	   	   return FALSE;
+	   	   return false;
     }
 
 	if(FT_SetLatencyTimer(ftHandle, 2) != FT_OK)
-		return FALSE;
+		return false;
 	if(FT_SetDataCharacteristics(ftHandle,FT_BITS_8,FT_STOP_BITS_1,FT_PARITY_NONE) != FT_OK)
-		return FALSE;
+		return false;
 	if(FT_SetDataCharacteristics(ftHandle,FT_BITS_8,FT_STOP_BITS_1,FT_PARITY_NONE) != FT_OK)
-		return FALSE;
+		return false;
 	if(FT_SetTimeouts(ftHandle,5000,0) != FT_OK)
-		return FALSE;
-	return TRUE;/* all ok */
+		return false;
+	return true;/* all ok */
 
   
 }
@@ -58,7 +58,7 @@ bool USBPortWin::open_port (QString port_name)
 bool USBPortWin::close_port ()
 {
 	    FT_Close(ftHandle);
-        return TRUE;
+        return true;
 }
 
 int USBPortWin::send_packet (unsigned char packet[PACKETSIZE])

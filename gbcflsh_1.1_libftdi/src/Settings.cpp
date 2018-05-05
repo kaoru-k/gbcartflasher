@@ -12,13 +12,13 @@
 #include <math.h>
 
 bool
-  Settings::commanual = FALSE;
+  Settings::commanual = false;
 alg_t
   Settings::algorythm = ALG16;
 dap_t
   Settings::dap = TOGGLE;
 bool
-  Settings::showbbl = FALSE;
+  Settings::showbbl = false;
 speed_type
   Settings::speed = STANDARD;
 QThread::Priority Settings::priority = QThread::NormalPriority;
@@ -37,7 +37,7 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   com_combo = new QComboBox (this);
   combo_boxes->addWidget (com_combo);
 
-#ifdef Q_WS_X11
+#ifdef Q_OS_X11
   com_combo->insertItem (0, "/dev/ttyS0");
   com_combo->insertItem (1, "/dev/ttyS1");
   com_combo->insertItem (2, "/dev/ttyS2");
@@ -56,7 +56,7 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   com_combo->insertItem (4, "USB");
 #endif
 
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
   com_combo->insertItem (0, "USB");
   if (set.contains ("user_com")) {
     com_combo->insertItem (1, set.value ("user_com").toString ());
@@ -64,7 +64,7 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   }
 #endif
 
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
   com_combo->insertItem (0, "COM1");
   com_combo->insertItem (1, "COM2");
   com_combo->insertItem (2, "COM3");
@@ -135,7 +135,7 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   all->addLayout (down);
   setLayout (all);
 
-  auto_size = TRUE;
+  auto_size = true;
   mbc = MBCAUTO;
   ram_size = 8;
   flash_size = 512;
@@ -304,7 +304,7 @@ Settings::setLang (const QString & lang)
 
 void Settings::setAuto (int state) {
   if (state == Qt::Checked)
-    auto_size = TRUE;
+    auto_size = true;
   else
-    auto_size = FALSE;
+    auto_size = false;
 }

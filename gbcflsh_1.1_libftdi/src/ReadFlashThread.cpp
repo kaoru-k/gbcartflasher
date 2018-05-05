@@ -9,7 +9,7 @@
 
 
 void ReadFlashThread::run () {
-  end = FALSE;
+  end = false;
   unsigned char packet[72], data[16384];
   int character, data_type = 0x00, recived = 0, retries = 0, page_number, packet_number, prv_count = 0;
   config_t cfg;
@@ -25,7 +25,7 @@ void ReadFlashThread::run () {
     return;
   }
   do {				/* send start packet and wait for first one of response */
-    if (Logic::send_start_packet (port, cfg) == FALSE) {
+    if (Logic::send_start_packet (port, cfg) == false) {
   	  port->close_port ();
   	  fclose (file);
   	  emit error (SEND_ERROR);
@@ -152,7 +152,7 @@ void ReadFlashThread::run () {
     {
       port->close_port ();
       fclose (file);
-      emit error (TRUE);
+      emit error (true);
     }
   else
     {
@@ -165,5 +165,5 @@ void ReadFlashThread::run () {
 void
 ReadFlashThread::canceled (void)
 {
-  end = TRUE;
+  end = true;
 }

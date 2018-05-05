@@ -45,12 +45,12 @@ bool SerialPortWin::open_port(QString port_name)
         dcb.Parity = NOPARITY; /* setup parity */
         dcb.StopBits = ONESTOPBIT; /* stop bits */
         dcb.ByteSize = 8; /* data bits count */
-        dcb.fParity = FALSE; /* no parity check */
+        dcb.fParity = false; /* no parity check */
         SetCommState(hCommDev, &dcb);
-        return TRUE;
+        return true;
     }
     else
-        return FALSE; 
+        return false; 
 
   
 }
@@ -58,11 +58,11 @@ bool SerialPortWin::open_port(QString port_name)
 bool SerialPortWin::close_port ()
 {
 if((hCommDev == NULL) || (hCommDev == INVALID_HANDLE_VALUE))
-        return FALSE;
+        return false;
     else
     {
         CloseHandle(hCommDev);
-        return TRUE;
+        return true;
     }
 
 }
@@ -81,9 +81,9 @@ int SerialPortWin::send_packet (unsigned char packet[PACKETSIZE])
 bool SerialPortWin::send_char (unsigned char character)
 {
   	if(TransmitCommChar(hCommDev,character))
-        return TRUE;
+        return true;
     else
-        return FALSE;
+        return false;
  
 
 }

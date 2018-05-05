@@ -22,7 +22,7 @@ parse_params (int /*argc*/, char *argv[])
     {
 /* disable auto com search in windows */
       if (strcmp (*argv, "-commanual") == 0)
-	Settings::commanual = TRUE;
+	Settings::commanual = true;
 /* additional communication params */
       if (strcmp (*argv, "-12bit") == 0)
 	Settings::algorythm = ALG12;
@@ -33,7 +33,7 @@ parse_params (int /*argc*/, char *argv[])
       if (strcmp (*argv, "-datapoll") == 0)
 	Settings::dap = DATAPOLL;
       if (strcmp (*argv, "-showbbl") == 0)
-	Settings::showbbl = TRUE;
+	Settings::showbbl = true;
 /*
  * USB speed LOW 125000bps HI 375000
  */
@@ -95,7 +95,7 @@ main (int argc, char *argv[])
   QCoreApplication::setOrganizationName ("GBCFProject");
   QCoreApplication::setApplicationName ("GameBoyCartFlasher");
   QSettings settings;
-/* 
+/*
  * Default language for application is English. It can be canged with
  * files containing compiled QT translations. All files have same naming
  * convention gbcflsh_langname.qm i.e. gbcflsh_polish.qm. Program knows
@@ -105,18 +105,18 @@ main (int argc, char *argv[])
  * is langname in filename. Lang selected with ComboBox is saved in 
  * selected_lang record as langname.
  */
-  QTextCodec::setCodecForTr (QTextCodec::codecForName ("UTF-8"));
+  //QTextCodec::setCodecForTr (QTextCodec::codecForName ("UTF-8"));
   QString langName = settings.value("selected_lang").toString ();
   QString langPath = settings.value("lang_path").toString();
   if(langPath == "")
   	langPath = "./";
   QTranslator translator;
-  translator.load ( "gbcflsh_" + langName,langPath);
+  translator.load ( "gbcflsh_" + langName, langPath);
   app.installTranslator (&translator);
 
   Gui window;
   window.show ();
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
   window.startup_info();
 #endif
   return app.exec ();

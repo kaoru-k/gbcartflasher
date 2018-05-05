@@ -11,8 +11,8 @@
 void
 WriteRamThread::run ()
 {
-  end = FALSE;
-  bool closing = FALSE;
+  end = false;
+  bool closing = false;
   /* function similar to write_flash */
   int character, page_number, packet_number, retries = 0;
   unsigned char packet[72], data[8192];
@@ -35,7 +35,7 @@ WriteRamThread::run ()
 
   do
     {
-      if (Logic::send_start_packet (port, cfg) == FALSE)
+      if (Logic::send_start_packet (port, cfg) == false)
 	{
 	  port->close_port ();
 	  fclose (file);
@@ -80,7 +80,7 @@ WriteRamThread::run ()
 	    {
 	      Logic::fill_data_packet (packet, &data[packet_number * 64],
 				       LAST_DATA, packet_number, page_number);
-	      closing = TRUE;
+	      closing = true;
 
 	    }
 
@@ -112,7 +112,7 @@ WriteRamThread::run ()
 		{
 		  port->close_port ();
 		  fclose (file);
-		  emit error (TRUE);
+		  emit error (true);
 		  return;	/* end of 2kB page */
 		}
 	      if (++packet_number == 128)
@@ -143,12 +143,12 @@ WriteRamThread::run ()
 
   port->close_port ();
   fclose (file);
-  emit error (TRUE);
+  emit error (true);
   return;
 }
 
 void
 WriteRamThread::canceled (void)
 {
-  end = TRUE;
+  end = true;
 }
