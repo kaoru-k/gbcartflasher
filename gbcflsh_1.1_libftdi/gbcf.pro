@@ -10,7 +10,6 @@ INCLUDEPATH += .
 OBJECTS_DIR = build
 MOC_DIR = build
 DESTDIR = release
-
 # Input
 HEADERS += src/About.h \
            src/AbstractPort.h \
@@ -40,7 +39,8 @@ SOURCES += src/About.cpp \
 TRANSLATIONS += src/gbcflsh_english.ts \
                 src/gbcflsh_french.ts \
                 src/gbcflsh_german.ts \
-                src/gbcflsh_polish.ts
+                src/gbcflsh_polish.ts \
+                src/gbcflsh_japanese.ts
 RC_FILE = src/res.rc
 win32 {
   SOURCES += src/SerialPortWin.cpp \

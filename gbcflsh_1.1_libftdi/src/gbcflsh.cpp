@@ -97,7 +97,6 @@ main (int argc, char *argv[])
   QCoreApplication::setApplicationName ("GameBoyCartFlasher");
 
   QString dirPath = QCoreApplication::applicationDirPath();
-qDebug( (dirPath + "/GameBoyCartFlasher.conf").toUtf8().data() );
   QSettings settings(dirPath + "/GameBoyCartFlasher.conf", QSettings::IniFormat);
   //QSettings settings;
 /*
