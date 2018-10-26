@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pl_PL">
+<TS version="2.1" language="ja">
 <context>
     <name>About</name>
     <message>
         <location filename="About.cpp" line="14"/>
         <source>About</source>
-        <translation>Über</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="About.cpp" line="23"/>
         <source>GB Cart Flasher Project</source>
-        <translation>Projekt GB Cart Flasher</translation>
+        <translation>GB Cart Flasher Project</translation>
     </message>
     <message>
         <location filename="About.cpp" line="27"/>
         <source>GB Cart Flasher for Win9x, Win2k, WinXP version </source>
-        <translation>GB Cart Flasher Version für Win9x, Win2K und WinXP; version </translation>
+        <translation>GB Cart Flasher for Win9x, Win2k, WinXP version </translation>
     </message>
     <message>
         <location filename="About.cpp" line="35"/>
@@ -24,19 +24,9 @@
         <translation>e-mail: &lt;a href=mailto:gbflasher@interia.pl&gt;gbflasher@interia.pl&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="About.cpp" line="46"/>
-        <source>&lt;b&gt;WARNING!&lt;/b&gt;</source>
-        <translation>&lt;b&gt; WARNUNG!&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="About.cpp" line="54"/>
-        <source>Close</source>
-        <translation>Schließen</translation>
-    </message>
-    <message>
         <location filename="About.cpp" line="38"/>
         <source>Translation by: Chroost</source>
-        <translation>Übersetzt von Reiner Ziegler</translation>
+        <translation>翻訳:CUBIC STLY</translation>
     </message>
     <message>
         <location filename="About.cpp" line="40"/>
@@ -44,17 +34,27 @@
 - make game backups from owned cartridges and play them on PC,
 - transfer game saves between cartridge and PC, save and modify them,
 - test written by yourself games directly on console (rewritable cartridge required).</source>
-        <translation>Dieses Programmiersystem, bestehend aus Software und Programmierhardware, gestattet:
-- Kopien von eigenen Spielmodulen zu erstellen und diese dann am PC zu spielen,
-- Spielstände zwischen Spielmodulen und PC auszutauschen, zu speichern und zu verändern,
-- selbst programmierte Spiele am GameBoy zu testen (beschreibbares Spielmodul notwendig).</translation>
+        <translation>このプログラムとデバイスのセットは以下のことを可能にします。
+- 所有カートリッジからゲームのバックアップを作成しPC上でプレイ
+- カートリッジバックアップデータの保存や修正
+- 自作ゲームを本体でテストする（書き換え可能なカートリッジが必要）</translation>
+    </message>
+    <message>
+        <location filename="About.cpp" line="46"/>
+        <source>&lt;b&gt;WARNING!&lt;/b&gt;</source>
+        <translation>&lt;b&gt;注意!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="About.cpp" line="50"/>
         <source>Using this set for purposes other than previously listed,
 especially for making illegal copies of copyrighted games is strictly prohibited!</source>
-        <translation>Dieses Programmiersystem darf nur für die vorher beschriebenen Funktionen verwendet werden.
-Es ist absolut verboten, illegale Kopien von urheberrechtlich geschützten Spielen anzufertigen!</translation>
+        <translation>前述の目的以外の使用をすること、
+特に著作権で保護されたゲームの違法コピーを作成することは禁止されています。</translation>
+    </message>
+    <message>
+        <location filename="About.cpp" line="54"/>
+        <source>Close</source>
+        <translation>閉じる</translation>
     </message>
 </context>
 <context>
@@ -63,314 +63,314 @@ Es ist absolut verboten, illegale Kopien von urheberrechtlich geschützten Spiel
         <location filename="Gui.cpp" line="39"/>
         <location filename="Gui.cpp" line="133"/>
         <source>GB Cart Flasher version </source>
-        <translation>GB Cart Flasher Version </translation>
+        <translation>GB Cart Flasher バージョン </translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="63"/>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="68"/>
         <source>Cart Info</source>
-        <translation>Spielmodul Info</translation>
+        <translation>カート情報</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="69"/>
         <source>Read FLASH</source>
-        <translation>FLASH lesen</translation>
+        <translation>ROM読込</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="70"/>
         <source>Write FLASH</source>
-        <translation>FLASH schreiben</translation>
+        <translation>FLASH書込</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="71"/>
         <source>Read RAM</source>
-        <translation>RAM lesen</translation>
+        <translation>RAM読込</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="72"/>
         <source>Write RAM</source>
-        <translation>RAM schreiben</translation>
+        <translation>RAM書込</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="73"/>
         <source>Erase FLASH</source>
-        <translation>FLASH löschen</translation>
+        <translation>FLASH消去</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="74"/>
         <source>Erase RAM</source>
-        <translation>RAM löschen</translation>
+        <translation>RAM消去</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="75"/>
         <source>About</source>
-        <translation>Über</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="133"/>
         <source> started.</source>
-        <translation> begonnen.</translation>
+        <translation> 開始</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="137"/>
         <source>Detecting device...</source>
-        <translation>Suche Programmierhardware ...</translation>
+        <translation>デバイスを検索中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="177"/>
         <source>Device connected to: USB</source>
-        <translation>Programmierhardware verbunden via: USB</translation>
+        <translation>デバイス接続先: USB</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="182"/>
         <location filename="Gui.cpp" line="206"/>
         <location filename="Gui.cpp" line="228"/>
         <source>Device firmware version:</source>
-        <translation>Programmierhardware Firmware Version:</translation>
+        <translation>デバイスファームウェア バージョン:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="196"/>
         <source>Device not found!</source>
-        <translation>Programmierhardware nicht gefunden !</translation>
+        <translation>デバイス接続が確認できません！</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="197"/>
         <source>Check COM port connection.</source>
-        <translation>Prüfe COM Port Verbindung.</translation>
+        <translation>COMポートの接続を確認</translation>
+    </message>
+    <message>
+        <location filename="Gui.cpp" line="200"/>
+        <source>Device connected to: </source>
+        <translation>デバイス接続先:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="224"/>
         <source>--Device information--</source>
-        <translation>--Programmierhardware Information--</translation>
+        <translation>--デバイス--</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="229"/>
         <source>--Cartridge information--</source>
-        <translation>--Spielmodul Information--</translation>
+        <translation>--カートリッジ--</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="231"/>
         <source>FLASH memory manufacturer ID:</source>
-        <translation>FLASH Speicher Hersteller ID:</translation>
+        <translation>FLASHメモリ メーカーID:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="233"/>
         <source>FLASH memory manufacturer name:</source>
-        <translation>FLASH Speicher Hersteller Name:</translation>
+        <translation>FLASHメモリ メーカー名:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="235"/>
         <source>FLASH memory chip ID:</source>
-        <translation>FLASH Speicher Chip ID:</translation>
+        <translation>FLASHメモリ チップID:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="240"/>
         <source>Locked!</source>
-        <translation>Gesichert !</translation>
+        <translation>ロック</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="242"/>
         <source>Unlocked</source>
-        <translation>Ungesichert</translation>
+        <translation>解除</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="243"/>
         <source>Boot Block Status: </source>
-        <translation>Boot Block Status:</translation>
+        <translation>ブートブロック:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="248"/>
         <source>--ROM/FLASH content information--</source>
-        <translation>--ROM/Flash Dateninhalt--</translation>
+        <translation>--ROM/FLASH--</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="249"/>
         <source>Game logo signature is correct.</source>
-        <translation>Die Spiele Logo Signatur ist korrekt.</translation>
+        <translation>ヘッダー情報: 正常</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="251"/>
         <source>Game title:</source>
-        <translation>Spiel Titel:</translation>
+        <translation>ゲームタイトル:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="253"/>
         <location filename="Gui.cpp" line="258"/>
         <source>YES</source>
-        <translation>JA</translation>
+        <translation>はい</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="255"/>
         <location filename="Gui.cpp" line="260"/>
         <source>NO</source>
-        <translation>NEIN</translation>
+        <translation>いいえ</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="256"/>
         <source>Designed for Color GB: </source>
-        <translation>Entwickelt für Color GB:</translation>
+        <translation>GBカラー対応: </translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="261"/>
         <source>Designed for Super GB: </source>
-        <translation>Entwickelt für Super GB:</translation>
+        <translation>スーパーGB対応: </translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="263"/>
         <source>Cartridge type:</source>
-        <translation>Spielmodul Typ:</translation>
+        <translation>ROMサイズ:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="265"/>
         <source>ROM size:</source>
-        <translation>ROM Größe:</translation>
+        <translation>ROM サイズ:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="267"/>
         <source>RAM size:</source>
-        <translation>RAM Größe:</translation>
+        <translation>RAMサイズ:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="269"/>
         <source>Checksum:</source>
-        <translation>Prüfsumme:</translation>
+        <translation>チェックサム:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="274"/>
         <source>Game logo signature is incorrect.</source>
-        <translation>Die Spiele Logo Signatur ist nicht korrekt.</translation>
+        <translation>ヘッダーロゴが不正</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="276"/>
         <source>Cartridge is blank, damaged or not connected.</source>
-        <translation>Das Spielmodul ist leer, beschädigt oder nicht angesteckt.</translation>
+        <translation>カートリッジは消去済か、未接続か破損しています</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="290"/>
         <source>Write FLASH to...</source>
-        <translation>Schreibe FLASH Daten nach ...</translation>
+        <translation>FLASHに書き込み中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="291"/>
         <location filename="Gui.cpp" line="326"/>
         <source>GB Rom Dumps (*.gb *.gbc *.sgb)</source>
-        <translation>GB Rom Dumps (*.gb *.gbc *.sgb)</translation>
+        <translation>GBロムデータ</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="315"/>
         <source>Reading data from FLASH to file:</source>
-        <translation>Lese Daten vom FLASH, in das File:</translation>
+        <translation>FLASHから読み込む:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="325"/>
         <source>Read FLASH from...</source>
-        <translation>Lese FLASH Daten von...</translation>
+        <translation>FLASHから読み込み中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="366"/>
         <source>Writing data to FLASH from file:</source>
-        <translation>Schreibe Daten in das FLASH, von File:</translation>
+        <translation>FLASHに書き込む:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="368"/>
         <location filename="Gui.cpp" line="481"/>
         <source>File size: </source>
-        <translation>File Größe:</translation>
+        <translation>ファイルサイズ:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="380"/>
         <source>Write RAM to...</source>
-        <translation>Schreibe RAM nach ...</translation>
+        <translation>RAMに書込中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="381"/>
         <location filename="Gui.cpp" line="421"/>
         <source>GB Save (*.sav)</source>
-        <translation>GB Save (*.sav)</translation>
+        <translation>GBセーブデータ (*.sav)</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="410"/>
         <source>Reading data from RAM to file:</source>
-        <translation>Lese Daten vom RAM, in das File:</translation>
+        <translation>RAMから読み込む:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="420"/>
         <source>Read RAM from...</source>
-        <translation>Lese RAM von ...</translation>
+        <translation>RAMから読み込み中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="479"/>
         <source>Writing data to RAM from file:</source>
-        <translation>Schreibe Daten in das RAM, von File:</translation>
+        <translation>RAMに書き込む:</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="502"/>
         <source>Erasing FLASH memory...</source>
-        <translation>Lösche FLASH Speicher ...</translation>
+        <translation>FLASHを消去中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="537"/>
         <source>Erasing RAM memory...</source>
-        <translation>Lösche RAM Speicher ...</translation>
+        <translation>RAMを消去中...</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="583"/>
         <source>&gt;Error opening file.</source>
-        <translation>&gt;Fehler beim Öffnen des Files.</translation>
+        <translation>ファイルオープンエラーです</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="587"/>
         <source>&gt;File write error.</source>
-        <translation>&gt;Fehler beim Schreiben des Files.</translation>
+        <translation>ファイル書き込みエラーです</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="591"/>
         <source>&gt;File read error.</source>
-        <translation>&gt;Fehler beim Lesen des Files.</translation>
+        <translation>ファイル読み取りエラーです</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="595"/>
         <source>&gt;Error sending data to device.</source>
-        <translation>&gt;Fehler beim Senden der Daten an die Programmierhardware.</translation>
+        <translation>データ送信エラーです</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="599"/>
         <source>&gt;Timeout!</source>
-        <translation>&gt;Timeout Fehler !</translation>
+        <translation>タイムアウトしました！</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="603"/>
         <source>&gt;Canceled.</source>
-        <translation>&gt;Aktion unterbrochen.</translation>
+        <translation>キャンセルしました</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="607"/>
         <source>&gt;Error opening COM port.</source>
-        <translation>&gt;Fehler beim Öffnen vom COM Port.</translation>
+        <translation>COMポートがオープン出来ません</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="611"/>
         <source>&gt;Bad file size.</source>
-        <translation>&gt;Falsche File Größe.</translation>
+        <translation>ファイルサイズが不正です</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="615"/>
         <source>&gt;Operation failure.</source>
-        <translation>&gt;Fehlerhafte Aktion.</translation>
+        <translation>実行エラーです</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="619"/>
         <source>&gt;Success!</source>
-        <translation>&gt;Aktion fehlerfrei durchgeführt !</translation>
-    </message>
-    <message>
-        <location filename="Gui.cpp" line="200"/>
-        <source>Device connected to: </source>
-        <translation>Programmierhardware verbunden via: </translation>
+        <translation>成功しました！</translation>
     </message>
 </context>
 <context>
@@ -378,12 +378,12 @@ Es ist absolut verboten, illegale Kopien von urheberrechtlich geschützten Spiel
     <message>
         <location filename="Logic.cpp" line="137"/>
         <source>Unknown manufacturer</source>
-        <translation>Unbekannter Hersteller</translation>
+        <translation>製造元不明</translation>
     </message>
     <message>
         <location filename="Logic.cpp" line="156"/>
         <source>Unknown type</source>
-        <translation>Unbekannter Flash Typ</translation>
+        <translation>不明な形式</translation>
     </message>
 </context>
 <context>
@@ -391,27 +391,27 @@ Es ist absolut verboten, illegale Kopien von urheberrechtlich geschützten Spiel
     <message>
         <location filename="Settings.cpp" line="27"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="125"/>
         <source>LANGUAGE:</source>
-        <translation>Sprache:</translation>
+        <translation>言語:</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="131"/>
         <source>Check file size</source>
-        <translation>Prüfe File Größe</translation>
+        <translation>ファイルサイズをチェック</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="306"/>
         <source>Change language</source>
-        <translation>Sprache ändern</translation>
+        <translation>言語変更</translation>
     </message>
     <message>
         <location filename="Settings.cpp" line="308"/>
         <source>After program restart language will be changed to: </source>
-        <translation>Nach dem Neustart des Programmes wird die Sprache geändert, auf: </translation>
+        <translation>言語設定の変更にはプログラムの再起動が必要です。変更先:</translation>
     </message>
 </context>
 </TS>

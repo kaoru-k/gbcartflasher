@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QSettings>
+#include <QFileInfo>
 #include <QTimer>
 #include <QTextCodec>
 #include <QMessageBox>
@@ -94,7 +95,11 @@ main (int argc, char *argv[])
  */
   QCoreApplication::setOrganizationName ("GBCFProject");
   QCoreApplication::setApplicationName ("GameBoyCartFlasher");
-  QSettings settings;
+
+  QString dirPath = QCoreApplication::applicationDirPath();
+qDebug( (dirPath + "/GameBoyCartFlasher.conf").toUtf8().data() );
+  QSettings settings(dirPath + "/GameBoyCartFlasher.conf", QSettings::IniFormat);
+  //QSettings settings;
 /*
  * Default language for application is English. It can be canged with
  * files containing compiled QT translations. All files have same naming
@@ -107,9 +112,10 @@ main (int argc, char *argv[])
  */
   //QTextCodec::setCodecForTr (QTextCodec::codecForName ("UTF-8"));
   QString langName = settings.value("selected_lang").toString ();
-  QString langPath = settings.value("lang_path").toString();
-  if(langPath == "")
-  	langPath = "./";
+  //QString langPath = settings.value("lang_path").toString();
+  //  if(langPath == "")
+  //	langPath = "./";
+  QString langPath = dirPath;
   QTranslator translator;
   translator.load ( "gbcflsh_" + langName, langPath);
   app.installTranslator (&translator);

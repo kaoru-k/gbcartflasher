@@ -7,6 +7,7 @@
 #include <QComboBox>
 #include <QMessageBox>
 #include <QSettings>
+#include <QCoreApplication>
 #include "Settings.h"
 #include "Gui.h"
 #include <math.h>
@@ -24,7 +25,9 @@ speed_type
 QThread::Priority Settings::priority = QThread::NormalPriority;
 
 Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
-  QSettings set;
+    QString dirPath = QCoreApplication::applicationDirPath();
+    QSettings set(dirPath + "/GameBoyCartFlasher.conf", QSettings::IniFormat);
+    //  QSettings set;
 
   labels = new QVBoxLayout ();
   combo_boxes = new QVBoxLayout ();
@@ -266,7 +269,9 @@ Settings::flash_types (int type)
 
 void
 Settings::get_langs() {
-  QSettings settings;
+    QString dirPath = QCoreApplication::applicationDirPath();
+    QSettings settings(dirPath + "/GameBoyCartFlasher.conf", QSettings::IniFormat);
+    //  QSettings settings;
   int selectedIndex = 0;
   QString selectedLang = settings.value("selected_lang").toString();
   settings.beginGroup("lang");
@@ -285,7 +290,9 @@ Settings::get_langs() {
 void
 Settings::setLang (const QString & lang)
 {
-  QSettings settings;
+    QString dirPath = QCoreApplication::applicationDirPath();
+    QSettings settings(dirPath + "/GameBoyCartFlasher.conf", QSettings::IniFormat);
+    //  QSettings settings;
   settings.beginGroup("lang");
   QString langFileName = settings.value("selected_lang").toString();
   QStringList keys = settings.childKeys();
