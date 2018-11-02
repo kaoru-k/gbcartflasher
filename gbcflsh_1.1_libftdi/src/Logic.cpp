@@ -134,7 +134,7 @@ Logic::read_status (AbstractPort * port, const char *port_name, char id, char mb
 	  flasher_stat->manufacturer_id = packet[4];
 	  /* if code if not found - it remains unknown */
 	  strcpy (flasher_stat->manufacturer,
-		  tr ("Unknown manufacturer").toLocal8Bit ());
+          tr ("Unknown manufacturer").toLocal8Bit ());
 	  for (i = 0; i < producers_count; i++)
 	    if (flasher_stat->manufacturer_id == producers[i].index)
 	      {

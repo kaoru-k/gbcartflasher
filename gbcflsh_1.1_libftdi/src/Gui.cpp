@@ -187,7 +187,7 @@ void Gui::startup_info (void) {
      port_type = SERIAL;
      port = create_port ();
      for (int i = 0; i < PORTS_COUNT; i++) {
-       if (Logic::read_status (port, settings->getCom(i).toLatin1(), NREAD_ID, 0x00, 0x00, &status) == true) {
+       if (Logic::read_status (port, settings->getCom(i).toLocal8Bit(), NREAD_ID, 0x00, 0x00, &status) == true) {
          which_port = i;
          break;
        }
@@ -214,7 +214,7 @@ void Gui::startup_info (void) {
   status_t status;
   QString tmp;
   AbstractPort *port = create_port ();
-  int return_code = Logic::read_status (port, settings->getCom().toLatin1(), READ_ID,
+  int return_code = Logic::read_status (port, settings->getCom().toLocal8Bit(), READ_ID,
    settings->getMbc (),
    Settings::algorythm, &status);
 
@@ -293,7 +293,7 @@ Gui::read_flash (void)
   if (file_name != "")
   {
     thread_RFLA->port = create_port ();
-    if (thread_RFLA->port->open_port (settings->getCom().toLatin1()) == false)
+    if (thread_RFLA->port->open_port (settings->getCom().toLocal8Bit()) == false)
     {
      print_error (PORT_ERROR);
      return;
@@ -303,7 +303,7 @@ Gui::read_flash (void)
      && !file_name.contains (".sgb", Qt::CaseInsensitive))
      file_name = file_name + ".gb";
 
-   thread_RFLA->file = fopen (file_name.toLatin1 (), "wb");
+   thread_RFLA->file = fopen (file_name.toLocal8Bit(), "wb");
    thread_RFLA->mbc = settings->getMbc ();
    thread_RFLA->page_count = settings->getFlash () / 16;
    thread_RFLA->dap = Settings::dap;
@@ -330,12 +330,12 @@ Gui::write_flash (void)
     long bytes_count;
     short kilobytes_count;
     thread_WFLA->port = create_port ();
-    if (thread_WFLA->port->open_port (settings->getCom().toLatin1()) == false)
+    if (thread_WFLA->port->open_port (settings->getCom().toLocal8Bit()) == false)
     {
      print_error (PORT_ERROR);
      return;
    }
-   thread_WFLA->file = fopen (file_name.toLatin1 (), "rb");
+   thread_WFLA->file = fopen (file_name.toLocal8Bit (), "rb");
    thread_WFLA->mbc = settings->getMbc ();
    thread_WFLA->algorythm = Settings::algorythm;
    thread_WFLA->dap = Settings::dap;
@@ -383,14 +383,14 @@ Gui::read_ram (void)
   if (file_name != "")
   {
     thread_RRAM->port = create_port ();
-    if (thread_RRAM->port->open_port (settings->getCom().toLatin1()) == false)
+    if (thread_RRAM->port->open_port (settings->getCom().toLocal8Bit()) == false)
     {
      print_error (PORT_ERROR);
      return;
    }
    if (!file_name.contains (".sav", Qt::CaseInsensitive))
      file_name = file_name + ".sav";
-   thread_RRAM->file = fopen (file_name.toLatin1 (), "wb");
+   thread_RRAM->file = fopen (file_name.toLocal8Bit (), "wb");
    thread_RRAM->mbc = settings->getMbc ();
    thread_RRAM->algorythm = Settings::algorythm;
    thread_RRAM->dap = Settings::dap;
@@ -425,12 +425,12 @@ Gui::write_ram (void)
     long bytes_count;
     short kilobytes_count;
     thread_WRAM->port = create_port ();;
-    if (thread_WRAM->port->open_port (settings->getCom().toLatin1()) == false)
+    if (thread_WRAM->port->open_port (settings->getCom().toLocal8Bit()) == false)
     {
      print_error (PORT_ERROR);
      return;
    }
-   thread_WRAM->file = fopen (file_name.toLatin1 (), "rb");
+   thread_WRAM->file = fopen (file_name.toLocal8Bit (), "rb");
    thread_WRAM->mbc = settings->getMbc ();
    thread_WRAM->algorythm = Settings::algorythm;
    thread_WRAM->dap = Settings::dap;
@@ -489,7 +489,7 @@ Gui::write_ram (void)
  Gui::erase_flash (void)
  {
   thread_E->port = create_port ();
-  if (thread_E->port->open_port (settings->getCom().toLatin1()) == false)
+  if (thread_E->port->open_port (settings->getCom().toLocal8Bit()) == false)
   {
     print_error (PORT_ERROR);
     return;
@@ -507,7 +507,7 @@ void
 Gui::erase_ram (void)
 {
   thread_E->port = create_port ();
-  if (thread_E->port->open_port (settings->getCom().toLatin1()) == false)
+  if (thread_E->port->open_port (settings->getCom().toLocal8Bit()) == false)
   {
     print_error (PORT_ERROR);
     return;

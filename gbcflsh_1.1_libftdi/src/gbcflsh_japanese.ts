@@ -263,7 +263,7 @@ especially for making illegal copies of copyrighted games is strictly prohibited
         <location filename="Gui.cpp" line="291"/>
         <location filename="Gui.cpp" line="326"/>
         <source>GB Rom Dumps (*.gb *.gbc *.sgb)</source>
-        <translation>GBロムデータ</translation>
+        <translation>GBロム(*.gb *.gbc *.sgb)</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="315"/>
