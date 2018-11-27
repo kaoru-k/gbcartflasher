@@ -229,8 +229,8 @@ void Gui::startup_info (void) {
     console->print ("\n" + tr ("--Cartridge information--"));
     tmp = tmp.sprintf (" 0x%x", status.manufacturer_id);
     console->print (tr ("FLASH memory manufacturer ID:") + tmp);
-    tmp = tmp.sprintf (" %s", status.manufacturer);
-    console->print (tr ("FLASH memory manufacturer name:") + tmp);
+    tmp = QString::fromLocal8Bit(status.manufacturer);
+    console->print (tr ("FLASH memory manufacturer name:") + " " + tmp);
     tmp = tmp.sprintf (" 0x%x", status.chip_id);
     console->print (tr ("FLASH memory chip ID:") + tmp);
 
@@ -259,8 +259,8 @@ void Gui::startup_info (void) {
      else
        tmp = tr ("NO");
      console->print (tr ("Designed for Super GB: ") + tmp);
-     tmp = tmp.sprintf (" %s", status.typ);
-     console->print (tr ("Cartridge type:") + tmp);
+     tmp = QString::fromLocal8Bit(status.typ);
+     console->print (tr ("Cartridge type:") + " " + tmp);
      tmp = tmp.sprintf (" %s", status.rom_size);
      console->print (tr ("ROM size:") + tmp);
      tmp = tmp.sprintf (" %s", status.ram_size);
