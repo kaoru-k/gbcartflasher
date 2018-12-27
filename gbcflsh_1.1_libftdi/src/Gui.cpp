@@ -175,7 +175,7 @@ void Gui::startup_info (void) {
     if (Logic::read_status (port, "USB", NREAD_ID, 0x00, 0x00, &status) == true) {
      QString tmp;
      console->print (tr ("Device connected to: USB"));
-    	  settings->setCom (4);	//4 is index of usb in combobox
+     settings->setCom (0);	//0 is index of usb in combobox
     	  tmp =
        tmp.sprintf (" %d%d.%d%d", status.ver_11, status.ver_12,
         status.ver_21, status.ver_22);
@@ -183,31 +183,11 @@ void Gui::startup_info (void) {
        console->line ();
        return;
      }
-
-     port_type = SERIAL;
-     port = create_port ();
-     for (int i = 0; i < PORTS_COUNT; i++) {
-       if (Logic::read_status (port, settings->getCom(i).toLocal8Bit(), NREAD_ID, 0x00, 0x00, &status) == true) {
-         which_port = i;
-         break;
-       }
-     }
      if (which_port == -1) {
        console->print (tr ("Device not found!"));
-       console->print (tr ("Check COM port connection."));
-     } else {
-       QString tmp;
-       console->print (tr ("Device connected to: ") +
-         settings->getCom (which_port));
-       settings->setCom (which_port);
-       tmp =
-       tmp.sprintf (" %d%d.%d%d", status.ver_11, status.ver_12,
-        status.ver_21, status.ver_22);
-       console->print (tr ("Device firmware version:") + tmp);
+       console->line ();
      }
-   }
-   console->line ();
-
+  }
  }
 
  void Gui::show_info () {

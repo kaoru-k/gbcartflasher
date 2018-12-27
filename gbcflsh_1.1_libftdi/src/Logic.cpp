@@ -133,14 +133,14 @@ Logic::read_status (AbstractPort * port, const char *port_name, char id, char mb
 	  flasher_stat->ver_22 = packet[3] % 16;
 	  flasher_stat->manufacturer_id = packet[4];
 	  /* if code if not found - it remains unknown */
-	  strcpy (flasher_stat->manufacturer,
+      strcpy (flasher_stat->manufacturer,
           tr ("Unknown manufacturer").toLocal8Bit ());
-	  for (i = 0; i < producers_count; i++)
+      for (i = 0; i < producers_count; i++)
 	    if (flasher_stat->manufacturer_id == producers[i].index)
 	      {
 		memset (flasher_stat->manufacturer, 0x00, 30);
 		strcpy (flasher_stat->manufacturer, producers[i].name);
-	      }
+          }
 	  flasher_stat->chip_id = packet[5];
 	  flasher_stat->bbl = packet[6] & 0x01;
 

@@ -26,7 +26,7 @@
     <message>
         <location filename="About.cpp" line="38"/>
         <source>Translation by: Chroost</source>
-        <translation>翻訳:CUBIC STLY</translation>
+        <translation>翻訳:CUBIC STYLE</translation>
     </message>
     <message>
         <location filename="About.cpp" line="40"/>
@@ -140,7 +140,7 @@ especially for making illegal copies of copyrighted games is strictly prohibited
     <message>
         <location filename="Gui.cpp" line="197"/>
         <source>Check COM port connection.</source>
-        <translation>COMポートの接続を確認</translation>
+        <translation>USBポートの接続を確認</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="200"/>
@@ -355,7 +355,7 @@ especially for making illegal copies of copyrighted games is strictly prohibited
     <message>
         <location filename="Gui.cpp" line="607"/>
         <source>&gt;Error opening COM port.</source>
-        <translation>COMポートがオープン出来ません</translation>
+        <translation>USBポートがオープン出来ません</translation>
     </message>
     <message>
         <location filename="Gui.cpp" line="611"/>
