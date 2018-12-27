@@ -54,6 +54,7 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   mbc_combo->insertItem (4, "ROM ONLY");
   mbc_combo->insertItem (5, "MBC5");
   mbc_combo->insertItem (6, "RUMBLE");
+  mbc_combo->insertItem (7, "CUBIC FLASH");
 
   flash_label = new QLabel ("FLASH:", this);
   labels->addWidget (flash_label);
@@ -180,7 +181,17 @@ Settings::setMbc (int mbc_nr)
       ram_types (3);
       flash_types (8);
       break;
-    }
+    case CUBIC_FLASH:
+      ram_types (0);
+      flash_types (0);
+      break;
+  }
+
+  if(mbc == CUBIC_FLASH)
+      Settings::algorythm = ALG16WR;
+  else
+      Settings::algorythm = ALG16;
+
   setFlash (flash_combo->currentIndex ());
   setRam (ram_combo->currentIndex ());
   emit refresh_ram_buttons ();

@@ -65,7 +65,7 @@ enum error_t
 
 
 enum alg_t
-{ ALG16 = 0x00, ALG12 = 0x01 };
+{ ALG16 = 0x00, ALG12 = 0x01, ALG16WR = 0x02  };
 enum dap_t
 { LONGER = 0x00, DEFAULT = 0x01, DATAPOLL = 0x02, TOGGLE = 0x03 };
 enum speed_type
@@ -74,7 +74,7 @@ enum speed_type
 /* MBC types */
 enum mbc_t
 { MBCAUTO = 0x00, MBC1 = 0x01, MBC2 = 0x02, MBC3 = 0x03,
-  ROMONLY = 0x04, MBC5 = 0x05, RUMBLE = 0x06
+  ROMONLY = 0x04, MBC5 = 0x05, RUMBLE = 0x06, CUBIC_FLASH = 0x07
 };
 
 #endif
