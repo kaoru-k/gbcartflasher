@@ -17,7 +17,7 @@
 class Settings:public QGroupBox
 {
   Q_OBJECT mbc_t mbc;
-  QString com_name;
+  unsigned int com_name;
   int flash_size;
   int ram_size;
   bool auto_size;
@@ -60,16 +60,6 @@ public:
     return ram_size;
   }
 
-  QString getCom (void)
-  {
-    return com_name;
-  }
-
-  QString getCom (int index)
-  {
-    return com_combo->itemText (index);
-  }
-
   mbc_t getMbc ()
   {
     if (mbc == MBC5 || mbc == RUMBLE)
@@ -91,6 +81,7 @@ public:
   void ram_types (int type);
   void flash_types (int type);
   void get_langs();
+  unsigned int getCom (void);
 
   public slots:
   void setCom (int index);

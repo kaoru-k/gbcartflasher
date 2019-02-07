@@ -24,9 +24,9 @@ USBPortWin::USBPortWin()
 }
 
 
-bool USBPortWin::open_port (QString port_name)
+bool USBPortWin::open_port (unsigned int port_num)
 {
-	if(FT_Open(0,&ftHandle) != FT_OK)
+    if(FT_Open( port_num ,&ftHandle) != FT_OK)
 		return false;
 /* choose speed */
     if(Settings::speed == STANDARD){

@@ -10,7 +10,7 @@
 class AbstractPort:public QObject
 {
 Q_OBJECT public:
-  virtual bool open_port (QString port_name) = 0;
+  virtual bool open_port (unsigned int  port_num) = 0;
   virtual bool close_port () = 0;
   virtual int receive_char () = 0;
   virtual bool send_char (unsigned char character) = 0;

@@ -18,8 +18,8 @@ USBPortMac::USBPortMac():AbstractPort () {
   ftdi_init(&ftdic);
 }
 
-bool USBPortMac::open_port (QString /*port_name*/) {
-  int ftStatus = ftdi_usb_open_desc(&ftdic, 0x1209, 0x6BCF, "gbcflsh", NULL);
+bool USBPortMac::open_port (unsigned int port_num) {
+  int ftStatus = ftdi_usb_open_desc_index(&ftdic, 0x1209, 0x6BCF, "gbcflsh", NULL, port_num);
   if (ftStatus < 0) {
     printf("couldn't open port : %d\n",ftStatus);
     return FALSE;

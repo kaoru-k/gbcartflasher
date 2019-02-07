@@ -40,7 +40,11 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   com_combo = new QComboBox (this);
   combo_boxes->addWidget (com_combo);
 
-  com_combo->insertItem (0, "USB");
+  com_combo->insertItem (0, "USB Device:0");
+  com_combo->insertItem (1, "USB Device:1");
+  com_combo->insertItem (2, "USB Device:2");
+  com_combo->insertItem (3, "USB Device:3");
+  com_combo->insertItem (4, "USB Device:4");
 
   mbc_label = new QLabel ("MBC:", this);
 
@@ -101,7 +105,7 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   mbc = MBCAUTO;
   ram_size = 8;
   flash_size = 512;
-  // com_name = com_combo->currentText ();
+  com_name = com_combo->currentIndex();
   Gui::port_type = USB;
 
   //connect (com_combo, SIGNAL (activated (int)), this, SLOT (setCom (int)));
@@ -112,13 +116,15 @@ Settings::Settings (QWidget * parent):QGroupBox (tr ("Settings"), parent) {
   connect (auto_check, SIGNAL (stateChanged (int)), this, SLOT (setAuto (int)));
 }
 
+unsigned int Settings::getCom () {
+  com_name = com_combo->currentIndex();
+  return com_name;
+}
+
 void Settings::setCom (int index) {
-  com_name = getCom (index);
+  getCom();
   com_combo->setCurrentIndex (index);
-  if (index < PORTS_COUNT)
-    Gui::port_type = USB;
-  else
-    Gui::port_type = USB;
+  Gui::port_type = USB;
 }
 
 void Settings::setFlash (int index) {

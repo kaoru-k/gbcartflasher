@@ -12,7 +12,6 @@
 #include "About.h"
 
 #ifdef Q_OS_X11
-#include "SerialPort.h"
 #include "USBPort.h"
 #endif
 
@@ -22,7 +21,6 @@
 
 #ifdef Q_OS_WIN
 #include "USBPortWin.h"
-#include "SerialPortWin.h"
 #endif
 
 #include "const.h"
@@ -141,28 +139,16 @@ Gui::Gui (QWidget * parent):QWidget (parent)
 
 AbstractPort *
 Gui::create_port (void) {
-  switch (port_type) {
-    case USB:
-      #ifdef Q_OS_WIN
-          return new USBPortWin;
-      #endif
-      #ifdef Q_OS_X11
-          return new USBPort;
-      #endif
-      #ifdef Q_OS_MAC
-          printf("opening MAC USB port\n");
-          return new USBPortMac;
-      #endif
-    case SERIAL:
-      #ifdef Q_OS_WIN
-          return new SerialPortWin;
-      #endif
-      #ifdef Q_OS_X11
-          return new SerialPort;
-      #endif
-    break;
-  }
-  return NULL;
+  #ifdef Q_OS_WIN
+      return new USBPortWin;
+  #endif
+  #ifdef Q_OS_X11
+      return new USBPort;
+  #endif
+  #ifdef Q_OS_MAC
+      printf("opening MAC USB port\n");
+      return new USBPortMac;
+  #endif
 }
 
 void Gui::startup_info (void) {
@@ -172,7 +158,7 @@ void Gui::startup_info (void) {
   if (Settings::commanual == false) {
     port_type = USB;
     AbstractPort *port = create_port ();
-    if (Logic::read_status (port, "USB", NREAD_ID, 0x00, 0x00, &status) == true) {
+    if (Logic::read_status (port, 0, NREAD_ID, 0x00, 0x00, &status) == true) {
      QString tmp;
      console->print (tr ("Device connected to: USB"));
      settings->setCom (0);	//0 is index of usb in combobox
@@ -194,7 +180,7 @@ void Gui::startup_info (void) {
   status_t status;
   QString tmp;
   AbstractPort *port = create_port ();
-  int return_code = Logic::read_status (port, settings->getCom().toLocal8Bit(), READ_ID,
+  int return_code = Logic::read_status (port, settings->getCom(), READ_ID,
    settings->getMbc (),
    Settings::algorythm, &status);
 
@@ -273,7 +259,7 @@ Gui::read_flash (void)
   if (file_name != "")
   {
     thread_RFLA->port = create_port ();
-    if (thread_RFLA->port->open_port (settings->getCom().toLocal8Bit()) == false)
+    if (thread_RFLA->port->open_port (settings->getCom()) == false)
     {
      print_error (PORT_ERROR);
      return;
@@ -310,7 +296,7 @@ Gui::write_flash (void)
     long bytes_count;
     short kilobytes_count;
     thread_WFLA->port = create_port ();
-    if (thread_WFLA->port->open_port (settings->getCom().toLocal8Bit()) == false)
+    if (thread_WFLA->port->open_port (settings->getCom()) == false)
     {
      print_error (PORT_ERROR);
      return;
@@ -363,7 +349,7 @@ Gui::read_ram (void)
   if (file_name != "")
   {
     thread_RRAM->port = create_port ();
-    if (thread_RRAM->port->open_port (settings->getCom().toLocal8Bit()) == false)
+    if (thread_RRAM->port->open_port (settings->getCom()) == false)
     {
      print_error (PORT_ERROR);
      return;
@@ -405,7 +391,7 @@ Gui::write_ram (void)
     long bytes_count;
     short kilobytes_count;
     thread_WRAM->port = create_port ();;
-    if (thread_WRAM->port->open_port (settings->getCom().toLocal8Bit()) == false)
+    if (thread_WRAM->port->open_port (settings->getCom()) == false)
     {
      print_error (PORT_ERROR);
      return;
@@ -469,7 +455,7 @@ Gui::write_ram (void)
  Gui::erase_flash (void)
  {
   thread_E->port = create_port ();
-  if (thread_E->port->open_port (settings->getCom().toLocal8Bit()) == false)
+  if (thread_E->port->open_port (settings->getCom()) == false)
   {
     print_error (PORT_ERROR);
     return;
@@ -487,7 +473,7 @@ void
 Gui::erase_ram (void)
 {
   thread_E->port = create_port ();
-  if (thread_E->port->open_port (settings->getCom().toLocal8Bit()) == false)
+  if (thread_E->port->open_port (settings->getCom()) == false)
   {
     print_error (PORT_ERROR);
     return;

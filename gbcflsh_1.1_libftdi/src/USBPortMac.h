@@ -18,7 +18,7 @@ Q_OBJECT
   bool opened;
 public:
   USBPortMac();
-  bool open_port (QString port_name);
+  bool open_port (unsigned int port_num);
   bool close_port ();
   int receive_char ();
   bool send_char (unsigned char character);

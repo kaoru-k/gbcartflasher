@@ -93,11 +93,11 @@ Logic::Logic (QObject * parent):QObject (parent)
 
 
 int
-Logic::read_status (AbstractPort * port, const char *port_name, char id, char mbc,
+Logic::read_status (AbstractPort * port, unsigned int port_num, char id, char mbc,
 		    char algorythm, status_t * flasher_stat)
 {
   assert (port != NULL);
-  if (port->open_port (port_name) == false)
+  if (port->open_port (port_num) == false)
     return PORT_ERROR;
 
   unsigned short crc16;
