@@ -129,7 +129,35 @@ void Settings::setCom (int index) {
 
 void Settings::setFlash (int index) {
   /* size = 32 * 2 ^ index */
-  flash_size = 32 * (int) pow (2.0, (double) index);
+  if(mbc == CUBIC_FLASH){
+      switch (index)
+        {
+        case 0:
+          flash_size = 32;
+          break;
+        case 1:
+          flash_size = 256;
+          break;
+        case 2:
+          flash_size = 2048;
+          break;
+        case 3:
+          flash_size = 4096;
+          break;
+        }
+
+      if(flash_size == 32 ){
+          Settings::algorythm = ALG16WR;
+      }
+      else{
+          Settings::algorythm = ALG16;
+      }
+
+  }
+  else{
+    flash_size = 32 * (int) pow (2.0, (double) index);
+    Settings::algorythm = ALG16;
+  }
 }
 
 void
@@ -193,11 +221,6 @@ Settings::setMbc (int mbc_nr)
       break;
   }
 
-  if(mbc == CUBIC_FLASH)
-      Settings::algorythm = ALG16WR;
-  else
-      Settings::algorythm = ALG16;
-
   setFlash (flash_combo->currentIndex ());
   setRam (ram_combo->currentIndex ());
   emit refresh_ram_buttons ();
@@ -235,11 +258,20 @@ Settings::flash_types (int type)
   for (int i = ile - 1; i >= 0; i--)
     flash_combo->removeItem (i);
 
-  for (int i = 0; i <= type; i++)
-    {
+  if(mbc != CUBIC_FLASH){
+    for (int i = 0; i <= type; i++)
+     {
       int pojemnosc = 32 * (int) pow (2.0, (double) i);
       flash_combo->insertItem (i, QString::number (pojemnosc) + " KB");
     }
+  }
+  // CUBIC FLASH CART
+  else{
+      flash_combo->insertItem (0, "32 KB");
+      flash_combo->insertItem (1, "256 KB");
+      flash_combo->insertItem (2, "2 MB");
+      flash_combo->insertItem (3, "4 MB");
+  }
 }
 
 void

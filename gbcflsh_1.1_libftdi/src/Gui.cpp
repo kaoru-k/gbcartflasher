@@ -184,6 +184,13 @@ void Gui::startup_info (void) {
    settings->getMbc (),
    Settings::algorythm, &status);
 
+  if(settings->getMbc() == CUBIC_FLASH && settings->getFlash() == 256 ){
+    // cubic flash cart unlock write protect
+    int return_code = Logic::read_status (port, settings->getCom(), READ_ID,
+     settings->getMbc (),
+     Settings::algorythm, &status);
+  }
+
   if (return_code == true)	/* no error */
   {
 
@@ -199,6 +206,15 @@ void Gui::startup_info (void) {
     console->print (tr ("FLASH memory manufacturer name:") + " " + tmp);
     tmp = tmp.sprintf (" 0x%x", status.chip_id);
     console->print (tr ("FLASH memory chip ID:") + tmp);
+
+    if(settings->getMbc() == CUBIC_FLASH){
+       if(status.manufacturer_id == 0xbf || status.manufacturer_id == 0x01){
+           console->print ("\nCUBIC STYLE FLASH CART: Detected!\n");
+       }
+       else{
+           console->print ("\nCUBIC STYLE FLASH CART: Not found!\n");
+       }
+    }
 
     if (Settings::showbbl == true)
     {

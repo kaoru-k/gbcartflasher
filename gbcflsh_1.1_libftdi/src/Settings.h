@@ -36,8 +36,6 @@ class Settings:public QGroupBox
   QHBoxLayout *north, *down;
   QVBoxLayout *all;
 
-
-
 public:
   static bool commanual;
   static alg_t algorythm;
@@ -45,7 +43,6 @@ public:
   static bool showbbl;
   static speed_type speed;
   static QThread::Priority priority;
-
 
 
     Settings (QWidget * parent = 0);
