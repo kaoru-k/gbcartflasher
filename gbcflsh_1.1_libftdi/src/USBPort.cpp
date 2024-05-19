@@ -23,7 +23,7 @@ AbstractPort ()
 
 
 bool USBPort::open_port (unsigned int port_num) {
-int ftStatus = ftdi_usb_open_desc_index(&ftdic, 0x0403, 0x6001, "gbcflsh", NULL, port_num);
+int ftStatus = ftdi_usb_open_desc_index(&ftdic, 0x0403, 0x6001, NULL, NULL, port_num);
 if (ftStatus < 0) {
   printf("couldn't open port : %d\n",ftStatus);
   return false;
