@@ -37,7 +37,7 @@ enum cchars
 #endif
 
 /* return values and errors */
-enum error_t
+enum my_error_t
 { TIMEOUT = -1, FILEERROR_O = -2, FILEERROR_W = -3, FILEERROR_R =
     -4, SEND_ERROR = -5,
   BAD_PACKET = -6, BAD_PARAMS = -7, PORT_ERROR = -8, WRONG_SIZE = -9

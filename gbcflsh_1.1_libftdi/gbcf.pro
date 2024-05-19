@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = gbcflsh 
 DEPENDPATH += .
 INCLUDEPATH += /usr/local/include/libftdi1/
+INCLUDEPATH += /usr/include/libftdi1/
 INCLUDEPATH += .
 OBJECTS_DIR = build
 MOC_DIR = build

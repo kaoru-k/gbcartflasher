@@ -29,7 +29,7 @@ SerialPort::SerialPort()
 bool SerialPort::open_port(QString port_name)
 {
   /* Open port in RW mode, don't check DCD line */
-  descriptor = open (port_name.toAscii(), O_RDWR | O_NOCTTY | O_NDELAY);
+  descriptor = open (port_name.toLatin1(), O_RDWR | O_NOCTTY | O_NDELAY);
   if (descriptor != -1)			/* is port opened */
   {
     opened = true;
