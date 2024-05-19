@@ -11,7 +11,7 @@
 #include "Logic.h"
 #include "About.h"
 
-#ifdef Q_OS_X11
+#ifdef Q_OS_LINUX
 #include "USBPort.h"
 #endif
 
@@ -142,7 +142,7 @@ Gui::create_port (void) {
   #ifdef Q_OS_WIN
       return new USBPortWin;
   #endif
-  #ifdef Q_OS_X11
+  #ifdef Q_OS_LINUX
       return new USBPort;
   #endif
   #ifdef Q_OS_MAC

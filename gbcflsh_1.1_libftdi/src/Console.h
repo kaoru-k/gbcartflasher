@@ -33,7 +33,7 @@ public:
 
   void line ()
   {
-#ifdef Q_OS_X11
+#ifdef Q_OS_LINUX
     print ("<br>");
 #else
     print ("<hr><br>");

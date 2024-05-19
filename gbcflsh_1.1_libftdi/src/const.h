@@ -21,7 +21,7 @@ enum cchars
 #define SERIAL 1
 
 /* strings for version information */
-#ifdef Q_OS_X11
+#ifdef Q_OS_LINUX
 #define SYSTEM "LINUX"
 #define DEVELOPED "GCC 4.1.1 + QT 4.3.2"
 #endif
